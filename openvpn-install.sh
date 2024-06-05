@@ -55,16 +55,15 @@ function checkOS() {
 		if [[ $ID == "fedora" || $ID_LIKE == "fedora" ]]; then
 			OS="fedora"
 		fi
-	if [[ $ID == "centos" || $ID == "rocky" || $ID == "almalinux" ]]; then
-    OS="centos"
-    if [[ ${VERSION_ID%.*} -lt 7 || ${VERSION_ID%.*} -gt 9 ]]; then
-        echo "⚠️ Your version of CentOS is not supported."
-        echo ""
-        echo "The script only supports CentOS 7, 8, and 9."
-        echo ""
-        exit 1
-    fi
-fi
+		if [[ $ID == "centos" || $ID == "rocky" || $ID == "almalinux" ]]; then
+			OS="centos"
+			if [[ ${VERSION_ID%.*} -lt 7 ]]; then
+				echo "⚠️ Your version of CentOS is not supported."
+				echo ""
+				echo "The script only support CentOS 7 and CentOS 8."
+				echo ""
+				exit 1
+			fi
 		fi
 		if [[ $ID == "ol" ]]; then
 			OS="oracle"
